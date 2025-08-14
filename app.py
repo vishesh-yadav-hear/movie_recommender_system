@@ -1,8 +1,6 @@
 from flask import Flask, request, render_template_string
 import pandas as pd
 import pickle
-import requests
-import io
 
 new_df = pickle.load(open('movies_df.pkl', 'rb'))
 new_df = pd.DataFrame(new_df)
