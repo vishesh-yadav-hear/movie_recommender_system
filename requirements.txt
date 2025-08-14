@@ -2,3 +2,5 @@ Flask
 pandas
 gdown
 gunicorn
+requests
+io
