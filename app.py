@@ -6,11 +6,8 @@ import io
 
 new_df = pickle.load(open('movies_df.pkl', 'rb'))
 new_df = pd.DataFrame(new_df)
+similerity = pickle.load(open('similerity.pkl','rb'))
 
-file_id = '1RBUZZhX3DuCyOr6iYK0B9ANm8cwkEWBV'
-url = f'https://drive.google.com/uc?export=download&id={file_id}'
-response = requests.get(url)
-response.raise_for_status()
 similarity = pickle.load(io.BytesIO(response.content))
 app = Flask(__name__)
 def recommender(input_movie):
