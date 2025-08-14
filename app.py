@@ -1,8 +1,12 @@
 from flask import Flask, request, render_template_string
 import pandas as pd
 import pickle
+import gdown
+url = "https://drive.google.com/file/d/1RBUZZhX3DuCyOr6iYK0B9ANm8cwkEWBV/view?usp=drive_link"
+output = "similerity.pkl"
+gdown.download(url, output, quiet=False)
 new_df = pickle.load(open('movies_df.pkl','rb'))
-similerity = pickle.load(open('https://drive.google.com/file/d/1RBUZZhX3DuCyOr6iYK0B9ANm8cwkEWBV/view?usp=drive_link','rb'))
+similerity = pickle.load(open('similerity.pkl','rb'))
 new_df = pd.DataFrame(new_df)
 app = Flask(__name__)
 def recommender(input_movie):
