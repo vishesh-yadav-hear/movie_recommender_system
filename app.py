@@ -2,7 +2,7 @@ from flask import Flask, request, render_template_string
 import pandas as pd
 import pickle
 new_df = pickle.load(open('movies_df.pkl','rb'))
-similerity = pickle.load(open('similerity.pkl','rb'))
+similerity = pickle.load(open('https://drive.google.com/file/d/1RBUZZhX3DuCyOr6iYK0B9ANm8cwkEWBV/view?usp=drive_link','rb'))
 new_df = pd.DataFrame(new_df)
 app = Flask(__name__)
 def recommender(input_movie):
