@@ -1,12 +1,39 @@
 from flask import Flask, request, render_template_string
+from pyngrok import ngrok
 import pandas as pd
 import pickle
+def join_file(output_file, parts):
+    with open(output_file, 'wb') as out:
+        for part in parts:
+            with open(part, 'rb') as f:
+                out.write(f.read())
 
-new_df = pickle.load(open('movies_df.pkl', 'rb'))
+# Join parts
+join_file("model.pkl", [
+    "similerity.pkl.part0",
+    "similerity.pkl.part1",
+    "similerity.pkl.part2",
+    "similerity.pkl.part3",
+    "similerity.pkl.part4",
+    "similerity.pkl.part5",
+    "similerity.pkl.part6",
+    "similerity.pkl.part7",
+    "similerity.pkl.part8",
+    "similerity.pkl.part9",
+    "similerity.pkl.part10",
+    "similerity.pkl.part11",
+    "similerity.pkl.part12",
+    "similerity.pkl.part13",
+    "similerity.pkl.part14",
+    "similerity.pkl.part15",
+    "similerity.pkl.part16",
+    "similerity.pkl.part17"
+    ])
+# Load model
+with open("model.pkl", "rb") as f:
+    similerity = pickle.load(f)
+new_df = pickle.load(open('movies_df.pkl','rb'))
 new_df = pd.DataFrame(new_df)
-similerity = pickle.load(open('similerity.pkl','rb'))
-
-similarity = pickle.load(io.BytesIO(response.content))
 app = Flask(__name__)
 def recommender(input_movie):
   movie_index = int(new_df[new_df['title'] == input_movie].index[0])
