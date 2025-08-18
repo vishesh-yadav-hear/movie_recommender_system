@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template_string
-from pyngrok import ngrok
 import pandas as pd
 import pickle
 def join_file(output_file, parts):
